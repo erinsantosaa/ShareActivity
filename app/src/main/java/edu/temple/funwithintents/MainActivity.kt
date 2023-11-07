@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.shareImageButton).setOnClickListener {
             val textToShare = editText.text.toString()
 
+            startActivity(Intent.createChooser(Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, textToShare)
+            }, "Share via"))
+
         }
     }
 }
